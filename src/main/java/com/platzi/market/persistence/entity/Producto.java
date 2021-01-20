@@ -1,7 +1,7 @@
 package com.platzi.market.persistence.entity;
 
 import javax.persistence.*;
-
+import com.platzi.market.persistence.entity.Categoria;
 @Entity
 @Table(name= "productos")
 public class Producto {
@@ -27,18 +27,11 @@ public class Producto {
 
     private Boolean estado;
 
-    public Producto() {
-    }
-
-    public Producto(Integer idProducto, String nombre, Integer idCategoria, String codigoBarras, Double precioVenta, Integer cantidadStock, Boolean estado) {
-        this.idProducto = idProducto;
-        this.nombre = nombre;
-        this.idCategoria = idCategoria;
-        this.codigoBarras = codigoBarras;
-        this.precioVenta = precioVenta;
-        this.cantidadStock = cantidadStock;
-        this.estado = estado;
-    }
+    //Un producto puede tener muchas categorias
+    @ManyToOne
+    //Update y Insert en cascascada desactivado
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+    private Categoria categoria;
 
     public Integer getIdProducto() {
         return idProducto;

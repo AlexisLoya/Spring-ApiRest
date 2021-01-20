@@ -3,6 +3,7 @@ package com.platzi.market.persistence.entity;
 import jdk.jfr.Enabled;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Enabled
 @Table(name = "categorias")
@@ -15,6 +16,10 @@ public class Categoria {
     private String descripcion;
 
     private Boolean estado;
+
+    //Una categoria puede tener muchos productos
+    @OneToMany(mappedBy = "categoria")
+    List<Producto> productos;
 
     public Integer getIdCategoria() {
         return idCategoria;
