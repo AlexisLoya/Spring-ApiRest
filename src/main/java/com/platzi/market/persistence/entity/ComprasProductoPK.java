@@ -6,19 +6,18 @@ import java.io.Serializable;
 
 @Embeddable
 public class ComprasProductoPK implements Serializable {
-
     @Column(name = "id_compra")
-    private Integer idColumna;
+    private Integer idCompra;
 
     @Column(name = "id_producto")
     private Integer idProducto;
 
-    public Integer getIdColumna() {
-        return idColumna;
+    public Integer getIdCompra() {
+        return idCompra;
     }
 
-    public void setIdColumna(Integer idColumna) {
-        this.idColumna = idColumna;
+    public void setIdCompra(Integer idCompra) {
+        this.idCompra = idCompra;
     }
 
     public Integer getIdProducto() {

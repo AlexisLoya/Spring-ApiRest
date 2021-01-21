@@ -1,37 +1,34 @@
 package com.platzi.market.persistence.entity;
 
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "compra")
+@Table(name = "compras")
 public class Compra {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_compra")
     private Integer idCompra;
 
-    @Column(name = "id_compra")
+    @Column(name = "id_cliente")
     private String idCliente;
 
     private LocalDateTime fecha;
 
-    @Column(name = "metodo_pago")
-    private String metodoPago;
+    @Column(name = "medio_pago")
+    private String medioPago;
 
     private String comentario;
-
     private String estado;
 
-    //Una compra puede pertenecer a muchas categorias
     @ManyToOne
-    //Update y Insert en cascascada desactivado
     @JoinColumn(name = "id_cliente", insertable = false, updatable = false)
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "prdocutos")
+    @OneToMany(mappedBy = "producto")
     private List<ComprasProducto> productos;
 
     public Integer getIdCompra() {
@@ -58,12 +55,12 @@ public class Compra {
         this.fecha = fecha;
     }
 
-    public String getMetodoPago() {
-        return metodoPago;
+    public String getMedioPago() {
+        return medioPago;
     }
 
-    public void setMetodoPago(String metodoPago) {
-        this.metodoPago = metodoPago;
+    public void setMedioPago(String medioPago) {
+        this.medioPago = medioPago;
     }
 
     public String getComentario() {
@@ -80,5 +77,21 @@ public class Compra {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<ComprasProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<ComprasProducto> productos) {
+        this.productos = productos;
     }
 }

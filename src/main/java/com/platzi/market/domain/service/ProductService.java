@@ -1,8 +1,7 @@
 package com.platzi.market.domain.service;
 
-
 import com.platzi.market.domain.Product;
-import com.platzi.market.domain.repository.ProducRepository;
+import com.platzi.market.domain.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,34 +11,28 @@ import java.util.Optional;
 @Service
 public class ProductService {
     @Autowired
-    private ProducRepository producRepository;
+    private ProductRepository productRepository;
 
     public List<Product> getAll() {
-        return producRepository.getAll();
+        return productRepository.getAll();
     }
 
     public Optional<Product> getProduct(int productId) {
-        return producRepository.getProduct(productId);
+        return productRepository.getProduct(productId);
     }
 
     public Optional<List<Product>> getByCategory(int categoryId) {
-        return producRepository.getByCategory(categoryId);
-    }
-
-    public Optional<List<Product>> getScarseProducts(int quantity) {
-        return producRepository.getScarseProducts(quantity);
+        return productRepository.getByCategory(categoryId);
     }
 
     public Product save(Product product) {
-        return producRepository.save(product);
+        return productRepository.save(product);
     }
 
     public boolean delete(int productId) {
         return getProduct(productId).map(product -> {
-            producRepository.delete(productId);
+            productRepository.delete(productId);
             return true;
         }).orElse(false);
     }
-
-
 }
