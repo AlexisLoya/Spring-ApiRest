@@ -19,6 +19,11 @@ dependencies {
 
 	runtimeOnly 'org.postgresql:postgresql'
 
+	//Data Mapper
+	implementation 'org.mapstruct:mapstruct:1.4.1.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.1.Final'
+
+
 }
 
 test {
